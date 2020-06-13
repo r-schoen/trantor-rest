@@ -1,6 +1,5 @@
 package net.schoen.trantor.resources;
 
-import net.schoen.trantor.domains.Threads;
 import net.schoen.trantor.repositories.ThreadRepository;
 import net.schoen.trantor.entities.ThreadEntity;
 
@@ -19,13 +18,13 @@ public class ThreadResource {
     ThreadRepository threadRepository;
 
     @GET
-    @Produces(MediaType.APPLICATION_XML)
-    public Threads getAll() {
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<ThreadEntity> getAll() {
         return threadRepository.all();
     }
 
     @GET
-    @Produces(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_JSON)
     @Path("/{id}")
     public ThreadEntity getById(@PathParam("id") Integer id) {
         return threadRepository.findById(id);

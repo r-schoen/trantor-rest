@@ -1,7 +1,6 @@
 package net.schoen.trantor.resources;
 
 
-import net.schoen.trantor.domains.Users;
 import net.schoen.trantor.entities.UserEntity;
 import net.schoen.trantor.repositories.UserRepository;
 
@@ -11,6 +10,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 @Path("/api/users")
 public class UserResource {
@@ -19,13 +19,13 @@ public class UserResource {
     UserRepository userRepository;
 
     @GET
-    @Produces(MediaType.APPLICATION_XML)
-    public Users hello() {
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<UserEntity> hello() {
         return userRepository.all();
     }
 
     @GET
-    @Produces(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_JSON)
     @Path("/{id}")
     public UserEntity getById(@PathParam("id") Integer id) {
         return userRepository.findById(id);
