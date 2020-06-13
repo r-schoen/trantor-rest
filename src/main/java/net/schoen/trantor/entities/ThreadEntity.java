@@ -6,7 +6,9 @@ import javax.persistence.*;
 import javax.xml.bind.annotation.*;
 import java.util.List;
 
-@XmlRootElement(name = "thread")
+import static net.schoen.trantor.config.XmlConstants.NAMESPACE_A;
+
+@XmlRootElement(name = "thread", namespace = NAMESPACE_A)
 @Entity
 @Table(name = "threads", schema = "message_board")
 public class ThreadEntity extends PanacheEntityBase {
@@ -16,11 +18,17 @@ public class ThreadEntity extends PanacheEntityBase {
     @XmlElement(name = "user")
     public UserEntity userEntity;
 
+    @OneToMany
+    @JoinColumn(name = "thread_id", referencedColumnName = "thread_id")
+    @XmlElementWrapper(name = "replies")
+    @XmlElement(name = "reply")
+    public List<ReplyEntity> replies;
+
     @Id
     @GeneratedValue
     @Column(name = "thread_id")
     @XmlAttribute(name = "thread-id")
-    public Integer messageId;
+    public Integer thread_id;
 
     @Column(name = "body")
     public String body;

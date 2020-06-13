@@ -9,6 +9,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.List;
 
+import static net.schoen.trantor.config.XmlConstants.NAMESPACE_A;
+
 // todo: add replies
 @XmlRootElement(name = "threads")
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -20,7 +22,7 @@ public class Threads implements Serializable {
         this.threads = threads;
     }
 
-    @XmlElement(name = "thread")
+    @XmlElement(name = "thread", namespace = NAMESPACE_A)
     private List<ThreadEntity> threads;
 
     public List<ThreadEntity> getThreads() {

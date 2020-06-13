@@ -7,7 +7,9 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name = "user")
+import static net.schoen.trantor.config.XmlConstants.NAMESPACE_A;
+
+@XmlRootElement(name = "user", namespace = NAMESPACE_A)
 @Entity
 @Table(name = "users", schema = "message_board")
 public class UserEntity extends PanacheEntityBase {

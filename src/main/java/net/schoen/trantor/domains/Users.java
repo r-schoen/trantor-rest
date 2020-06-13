@@ -8,6 +8,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
+import static net.schoen.trantor.config.XmlConstants.NAMESPACE_A;
+
 @XmlRootElement(name = "users")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Users {
@@ -19,7 +21,7 @@ public class Users {
         this.users = users;
     }
 
-    @XmlElement(name = "user")
+    @XmlElement(name = "user", namespace = NAMESPACE_A)
     private List<UserEntity> users;
 
     public List<UserEntity> getMessages() {
