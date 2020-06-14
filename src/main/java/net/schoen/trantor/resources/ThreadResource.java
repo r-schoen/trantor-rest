@@ -4,6 +4,7 @@ import net.schoen.trantor.repositories.ThreadRepository;
 import net.schoen.trantor.entities.ThreadEntity;
 
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
@@ -25,5 +26,13 @@ public class ThreadResource {
     @Path("/{id}")
     public ThreadEntity getById(@PathParam("id") Integer id) {
         return threadRepository.findById(id);
+    }
+
+    @PUT
+    @Transactional
+    public void save(String body) {
+        ThreadEntity e = new ThreadEntity();
+        e.body = body;
+        e.persist();
     }
 }

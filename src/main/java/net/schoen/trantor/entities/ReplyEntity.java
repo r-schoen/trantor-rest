@@ -9,7 +9,8 @@ import javax.persistence.*;
 @Table(name = "replies", schema = "message_board")
 public class ReplyEntity extends PanacheEntityBase {
     @Id
-    @GeneratedValue
+    @SequenceGenerator(name = "replies-gen", sequenceName = "replies_reply_id_seq", schema = "message_board")
+    @GeneratedValue(generator = "replies-gen", strategy = GenerationType.IDENTITY)
     @Column(name = "reply_id")
     public Integer replyId;
 

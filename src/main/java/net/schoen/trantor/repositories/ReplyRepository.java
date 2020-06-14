@@ -2,6 +2,7 @@ package net.schoen.trantor.repositories;
 
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import io.quarkus.panache.common.Sort;
+import net.schoen.trantor.domains.ReplyRequest;
 import net.schoen.trantor.entities.ReplyEntity;
 
 import javax.inject.Singleton;
@@ -24,5 +25,9 @@ public class ReplyRepository implements PanacheRepository<ReplyEntity> {
 
     public List<ReplyEntity> all() {
         return listAll(Sort.ascending("reply_id"));
+    }
+
+    public void save(ReplyRequest request) {
+
     }
 }

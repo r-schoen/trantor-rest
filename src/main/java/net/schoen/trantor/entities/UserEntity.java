@@ -9,7 +9,8 @@ import javax.persistence.*;
 public class UserEntity extends PanacheEntityBase {
 
     @Id
-    @GeneratedValue
+    @SequenceGenerator(name = "user-gen", sequenceName = "users_user_id_seq", schema = "message_board")
+    @GeneratedValue(generator = "user-gen", strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     public Integer userId;
 
