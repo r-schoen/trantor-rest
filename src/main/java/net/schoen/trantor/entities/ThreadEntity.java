@@ -2,6 +2,7 @@ package net.schoen.trantor.entities;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
+import javax.json.bind.annotation.JsonbProperty;
 import javax.persistence.*;
 import javax.xml.bind.annotation.*;
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
 @Table(name = "threads", schema = "message_board")
 public class ThreadEntity extends PanacheEntityBase {
 
+    @JsonbProperty("user")
     @ManyToOne(targetEntity = UserEntity.class, fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     public UserEntity userEntity;
@@ -27,6 +29,4 @@ public class ThreadEntity extends PanacheEntityBase {
 
     @Column(name = "body")
     public String body;
-
-
 }
