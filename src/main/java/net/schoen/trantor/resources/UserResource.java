@@ -13,8 +13,8 @@ import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 @Path("/users")
-@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 public class UserResource {
 
     @Inject
@@ -31,12 +31,18 @@ public class UserResource {
         return userRepository.findById(id);
     }
 
+    @GET
+    @Path("/find-by-username/{username}")
+    public UserEntity getByusername(@PathParam("username") String username) {
+        return userRepository.findByUsername(username);
+    }
+
     @PUT
     @Transactional
     public void put(UserRequest request) {
         UserEntity e = new UserEntity();
-        e.fname = request.getFirstName();
-        e.lname = request.getLastName();
+        e.username = request.getUsername();
+        e.email = request.getEmail();
         e.persist();
     }
 }

@@ -14,9 +14,9 @@ public class UserEntity extends PanacheEntityBase {
     @Column(name = "user_id")
     public Integer userId;
 
-    @Column(name = "first_name")
-    public String fname;
+    @Column(name = "username")
+    public String username;
 
-    @Column(name = "last_name")
-    public String lname;
+    @Column(name = "email")
+    public String email;
 }

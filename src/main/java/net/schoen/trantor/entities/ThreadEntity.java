@@ -27,6 +27,9 @@ public class ThreadEntity extends PanacheEntityBase {
     @Column(name = "thread_id")
     public Integer thread_id;
 
+    @Column(name = "title")
+    public String title;
+
     @Column(name = "body")
     public String body;
 }
